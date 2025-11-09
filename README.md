@@ -41,12 +41,11 @@ This project has been **reorganized into three modular sections** for better dev
 
 | Document | Description |
 |----------|-------------|
-| **[NEW_STRUCTURE_SUMMARY.md](NEW_STRUCTURE_SUMMARY.md)** ⭐ | **START HERE** - Complete overview & setup guide |
-| **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** 📄 | One-page cheat sheet |
-| **[VISUAL_STRUCTURE.md](VISUAL_STRUCTURE.md)** 📊 | Visual diagrams & data flow |
-| **[ARCHITECTURE.md](ARCHITECTURE.md)** 🏗️ | Detailed architecture guide |
-| **[MIGRATION_GUIDE.md](MIGRATION_GUIDE.md)** 🔄 | Migration from old structure |
-| **[DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)** 📚 | Complete documentation index |
+| **[Getting Started Guide](docs/GETTING_STARTED.md)** ⭐ | **START HERE** - Quick start and setup |
+| **[Architecture Guide](docs/ARCHITECTURE.md)** 🏗️ | Detailed architecture and design |
+| **[Quick Reference](docs/QUICK_REFERENCE.md)** 📄 | One-page command cheat sheet |
+| **[Project Structure](docs/NEW_STRUCTURE_SUMMARY.md)** 📊 | Three-tier architecture overview |
+| **[Migration Guide](docs/MIGRATION_GUIDE.md)** 🔄 | Migrating from old structure |
 
 ### 🚀 Quick Setup
 
