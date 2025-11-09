@@ -401,9 +401,15 @@ If you use this platform or methodology in your research, please cite:
 
 ## 📧 Contact
 
-- **Project Maintainer**: Your Name
-- **Email**: your.email@example.com
-- **GitHub**: [@yourusername](https://github.com/yourusername)
+### Project Team
+
+**Amine Mayoufi** ([@nomino0](https://github.com/nomino0))
+- Email: aminemayoufi@ieee.org
+- Role: Lead Developer & ML Engineer
+
+**Walaa Hidaya** ([@WalaaHidaya](https://github.com/WalaaHidaya))
+- Email: walaahidaya0@gmail.com
+- Role: Data Scientist & Co-Developer
 
 ---
 
