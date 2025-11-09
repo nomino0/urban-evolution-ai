@@ -1,0 +1,244 @@
+# Multi-Agent System Configuration
+
+# =============================================================================
+# Agent Orchestration (LangGraph)
+# =============================================================================
+orchestrator:
+  max_iterations: 10
+  timeout_seconds: 300
+  enable_human_in_the_loop: true
+  enable_langsmith_tracing: true
+  retry_on_failure: true
+  max_retries: 3
+  
+  conditional_edges:
+    ethics_check:
+      min_score_auto_approve: 0.8
+      require_human_approval_below: 0.7
+    cost_check:
+      max_cost_auto_approve: 5.0  # USD
+      require_human_approval_above: 10.0
+
+# =============================================================================
+# NewsAnalyzer Agent
+# =============================================================================
+news_analyzer:
+  llm_model: "llama-3.1-70b-versatile"  # Groq
+  temperature: 0.3
+  max_tokens: 2000
+  
+  news_sources:
+    - name: "Google News"
+      url_template: "https://news.google.com/rss/search?q={city}+urban+development"
+      enabled: true
+    - name: "Local Government"
+      url_template: "https://{city}.gov/news"
+      enabled: true
+    - name: "Urban Planning Blogs"
+      urls:
+        - "https://www.planetizen.com"
+        - "https://www.strongtowns.org"
+      enabled: true
+  
+  extraction_prompt: |
+    Extract urban development projects from the following news article.
+    For each project, identify:
+    1. Project name
+    2. Project type (residential, commercial, park, infrastructure, mixed-use)
+    3. Location (address or neighborhood)
+    4. Timeline (planned start/completion dates)
+    5. Scale (number of units, area, budget)
+    6. Sustainability features mentioned
+    
+    Return as structured JSON.
+  
+  geocoding:
+    service: "nominatim"  # or "google_maps"
+    confidence_threshold: 0.7
+
+# =============================================================================
+# GrowthPredictor Agent
+# =============================================================================
+growth_predictor:
+  llm_model: "llama-3.1-70b-versatile"
+  temperature: 0.2
+  
+  prediction_horizon: 6  # years
+  grid_resolution: 100  # meters per cell
+  
+  weight_adjustments:
+    news_project_boost: 0.2  # +20% growth probability near announced projects
+    news_project_radius: 500  # meters
+    
+  output_formats:
+    - "heatmap_geotiff"
+    - "heatmap_png"
+    - "geojson_polygons"
+    - "confidence_intervals"
+
+# =============================================================================
+# PolicyAnalyzer Agent
+# =============================================================================
+policy_analyzer:
+  llm_model: "llama-3.1-70b-versatile"
+  temperature: 0.4
+  
+  policy_database_path: "configs/policy_profiles.yaml"
+  
+  constraint_types:
+    - "building_height_limits"
+    - "density_restrictions"
+    - "green_space_requirements"
+    - "mixed_use_mandates"
+    - "parking_minimums"
+    - "sustainability_standards"
+  
+  analysis_prompt: |
+    Analyze how {policy_name} would transform {city_name}'s urban development.
+    Consider:
+    1. Building types and density changes
+    2. Green infrastructure additions
+    3. Transportation modifications
+    4. Architectural style adaptations
+    5. Community space requirements
+    
+    Output pixel-precise transformation rules.
+
+# =============================================================================
+# ScenarioGenerator Agent
+# =============================================================================
+scenario_generator:
+  llm_model: "llama-3.1-70b-versatile"
+  temperature: 0.5
+  max_tokens: 4000
+  
+  pixel_coordinate_system:
+    use_utm_projection: true
+    coordinate_precision: 1  # meter
+    
+  prompt_engineering:
+    detail_level: "high"
+    include_shadows: true
+    include_architectural_details: true
+    maintain_geographic_accuracy: true
+    photorealistic_style: true
+    
+  edit_region_constraints:
+    min_region_size_pixels: 50
+    max_region_size_pixels: 500
+    max_regions_per_image: 10
+    
+  reference_city_selection:
+    method: "policy_based"  # or "similarity_based"
+    fallback_city: "Copenhagen"
+
+# =============================================================================
+# ImageEditor Agent
+# =============================================================================
+image_editor:
+  api: "gemini_2.5_flash"
+  model_name: "gemini-2.5-flash"
+  
+  request_settings:
+    temperature: 0.4
+    candidate_count: 1
+    max_output_tokens: 2048
+    
+  image_processing:
+    max_input_size: [2048, 2048]  # pixels
+    output_format: "PNG"
+    compression_quality: 95
+    
+  retry_logic:
+    max_retries: 3
+    exponential_backoff: true
+    initial_delay_seconds: 2
+    
+  cost_tracking:
+    cost_per_image: 0.039  # USD (Gemini 2.5 Flash pricing)
+    log_all_requests: true
+
+# =============================================================================
+# EthicsGuardian Agent
+# =============================================================================
+ethics_guardian:
+  llm_model: "llama-3.1-70b-versatile"
+  temperature: 0.1  # Low temperature for consistency
+  
+  checks:
+    - name: "displacement_risk"
+      weight: 0.3
+      threshold: 0.7
+    - name: "environmental_impact"
+      weight: 0.25
+      threshold: 0.7
+    - name: "equity_fairness"
+      weight: 0.25
+      threshold: 0.7
+    - name: "cultural_preservation"
+      weight: 0.2
+      threshold: 0.7
+  
+  bias_detection:
+    demographic_groups:
+      - "low_income_communities"
+      - "minority_populations"
+      - "elderly_residents"
+      - "disabled_persons"
+    
+    metrics:
+      - "access_to_green_space"
+      - "proximity_to_services"
+      - "housing_affordability"
+      - "air_quality"
+  
+  audit_logging:
+    enabled: true
+    log_path: "outputs/ethics_reports"
+    include_reasoning: true
+    
+  human_review:
+    require_approval_for_low_scores: true
+    notification_method: "email"  # or "slack", "webhook"
+
+# =============================================================================
+# Agent Tools Configuration
+# =============================================================================
+tools:
+  geocoding:
+    provider: "nominatim"
+    user_agent: "urban-evolution-ai/0.1"
+    rate_limit: 1  # request per second
+    
+  news_scraper:
+    timeout_seconds: 10
+    max_articles_per_city: 50
+    cache_duration_hours: 24
+    
+  policy_database:
+    format: "yaml"
+    auto_reload: true
+    
+  osm_query:
+    timeout_seconds: 30
+    elements: ["building", "amenity", "landuse", "highway"]
+    
+  carbon_calculator:
+    emission_factors:
+      construction_per_sqm: 0.5  # kg CO2
+      demolition_per_sqm: 0.2
+      transportation_per_km: 0.12
+
+# =============================================================================
+# LangSmith Integration
+# =============================================================================
+langsmith:
+  project_name: "urban-evolution-ai"
+  tags:
+    - "urban-planning"
+    - "multi-agent"
+    - "gemini-flash"
+  
+  trace_all_agents: true
+  include_token_usage: true
+  include_cost_tracking: true

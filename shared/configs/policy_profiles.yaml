@@ -1,0 +1,338 @@
+# Urban Policy Profiles for Scenario Generation
+
+# =============================================================================
+# EU GREEN CITIES - European Sustainable Urban Development
+# =============================================================================
+EU_GREEN_CITIES:
+  name: "EU Green Cities Policy"
+  description: "Based on EU Green City Accord and European Green Deal principles"
+  reference_cities:
+    - "Copenhagen, Denmark"
+    - "Amsterdam, Netherlands"
+    - "Vienna, Austria"
+  
+  building_regulations:
+    max_height_stories: 6
+    green_roof_requirement: 0.4  # 40% of roof area
+    solar_panel_requirement: 0.3  # 30% of roof area
+    energy_efficiency_standard: "passive_house"
+    facade_materials:
+      - "recycled_brick"
+      - "wood_cladding"
+      - "light_colored_render"
+    
+  density:
+    residential_units_per_hectare: 80
+    floor_area_ratio: 2.5
+    building_coverage_ratio: 0.4
+    
+  green_infrastructure:
+    tree_canopy_coverage: 0.35  # 35% of area
+    green_space_per_person_sqm: 15
+    bioswales_required: true
+    permeable_pavement_percentage: 0.6
+    
+  transportation:
+    protected_bike_lanes_km_per_1000_people: 5
+    car_lane_reduction: true
+    pedestrian_zone_expansion: true
+    public_transit_stop_max_distance_m: 300
+    parking_maximum: 0.5  # spaces per unit
+    
+  mixed_use:
+    ground_floor_commercial_requirement: 0.3
+    residential_commercial_ratio: "70:30"
+    
+  sustainability_features:
+    rainwater_harvesting: "mandatory"
+    district_heating: "preferred"
+    electric_vehicle_charging: "20% of parking"
+    composting_facilities: "required"
+
+# =============================================================================
+# DEVELOPING DENSE - High-Density Emerging Economy
+# =============================================================================
+DEVELOPING_DENSE:
+  name: "High-Density Development (Emerging Economies)"
+  description: "Based on rapid urbanization patterns in Shenzhen, Mumbai, Lagos"
+  reference_cities:
+    - "Shenzhen, China"
+    - "Mumbai, India"
+    - "Bangkok, Thailand"
+  
+  building_regulations:
+    max_height_stories: 25
+    green_roof_requirement: 0.1
+    solar_panel_requirement: 0
+    energy_efficiency_standard: "basic"
+    facade_materials:
+      - "concrete"
+      - "glass"
+      - "metal_panels"
+    
+  density:
+    residential_units_per_hectare: 250
+    floor_area_ratio: 8.0
+    building_coverage_ratio: 0.7
+    
+  green_infrastructure:
+    tree_canopy_coverage: 0.15
+    green_space_per_person_sqm: 5
+    bioswales_required: false
+    permeable_pavement_percentage: 0.2
+    
+  transportation:
+    protected_bike_lanes_km_per_1000_people: 1
+    car_lane_reduction: false
+    pedestrian_zone_expansion: false
+    public_transit_stop_max_distance_m: 600
+    parking_maximum: 1.5
+    
+  mixed_use:
+    ground_floor_commercial_requirement: 0.6
+    residential_commercial_ratio: "50:50"
+    
+  sustainability_features:
+    rainwater_harvesting: "optional"
+    district_heating: "none"
+    electric_vehicle_charging: "5% of parking"
+    composting_facilities: "optional"
+
+# =============================================================================
+# DESERT SUSTAINABLE - Arid Climate Adaptation
+# =============================================================================
+DESERT_SUSTAINABLE:
+  name: "Desert Sustainable Development"
+  description: "Water-conscious design for arid climates (Phoenix, Dubai, Riyadh)"
+  reference_cities:
+    - "Phoenix, USA (transformed)"
+    - "Masdar City, UAE"
+    - "Tucson, USA"
+  
+  building_regulations:
+    max_height_stories: 8
+    green_roof_requirement: 0.2  # With drought-resistant plants
+    solar_panel_requirement: 0.6  # High solar potential
+    energy_efficiency_standard: "high_performance"
+    facade_materials:
+      - "light_colored_stucco"
+      - "reflective_glass"
+      - "local_stone"
+    cooling_passive_design: "required"
+    
+  density:
+    residential_units_per_hectare: 60
+    floor_area_ratio: 2.0
+    building_coverage_ratio: 0.35
+    
+  green_infrastructure:
+    tree_canopy_coverage: 0.20  # Native drought-resistant species
+    green_space_per_person_sqm: 12
+    bioswales_required: true  # For flash flood management
+    permeable_pavement_percentage: 0.5
+    xeriscaping: "mandatory"
+    
+  water_management:
+    greywater_recycling: "mandatory"
+    rainwater_harvesting: "mandatory"
+    drip_irrigation: "required"
+    water_efficient_fixtures: "required"
+    
+  transportation:
+    protected_bike_lanes_km_per_1000_people: 3
+    shade_structures_required: true
+    car_lane_reduction: false
+    public_transit_stop_max_distance_m: 400
+    parking_maximum: 1.0
+    
+  mixed_use:
+    ground_floor_commercial_requirement: 0.25
+    residential_commercial_ratio: "65:35"
+    
+  sustainability_features:
+    solar_panels: "mandatory"
+    district_cooling: "preferred"
+    electric_vehicle_charging: "30% of parking"
+    native_plant_landscaping: "required"
+
+# =============================================================================
+# MEDITERRANEAN COMPACT - Mediterranean Urban Form
+# =============================================================================
+MEDITERRANEAN_COMPACT:
+  name: "Mediterranean Compact City"
+  description: "Dense, walkable neighborhoods (Barcelona, Lisbon, Tunis medina)"
+  reference_cities:
+    - "Barcelona, Spain"
+    - "Lisbon, Portugal"
+    - "Nice, France"
+  
+  building_regulations:
+    max_height_stories: 7
+    green_roof_requirement: 0.25
+    solar_panel_requirement: 0.2
+    energy_efficiency_standard: "moderate"
+    facade_materials:
+      - "painted_stucco"
+      - "terracotta"
+      - "local_stone"
+    balconies_required: true
+    
+  density:
+    residential_units_per_hectare: 120
+    floor_area_ratio: 3.5
+    building_coverage_ratio: 0.75  # High building coverage
+    
+  urban_form:
+    street_pattern: "grid_with_diagonals"
+    block_size_m: 113  # Barcelona's Eixample
+    internal_courtyards: "required"
+    arcaded_walkways: "encouraged"
+    
+  green_infrastructure:
+    tree_canopy_coverage: 0.25
+    green_space_per_person_sqm: 10
+    street_trees: "mandatory"
+    pocket_parks: "encouraged"
+    bioswales_required: false
+    permeable_pavement_percentage: 0.3
+    
+  transportation:
+    protected_bike_lanes_km_per_1000_people: 4
+    car_lane_reduction: true
+    pedestrian_priority: "high"
+    superblocks: "encouraged"  # Barcelona model
+    public_transit_stop_max_distance_m: 250
+    parking_maximum: 0.3  # Underground only
+    
+  mixed_use:
+    ground_floor_commercial_requirement: 0.4
+    residential_commercial_ratio: "60:40"
+    
+  public_space:
+    plaza_requirement: "one per 5 blocks"
+    sidewalk_min_width_m: 3.5
+    outdoor_dining: "encouraged"
+    
+  sustainability_features:
+    rainwater_harvesting: "optional"
+    district_heating: "none"
+    electric_vehicle_charging: "15% of parking"
+    composting_facilities: "optional"
+
+# =============================================================================
+# AMERICAN SUBURB REFORMED - New Urbanism
+# =============================================================================
+AMERICAN_SUBURB_REFORMED:
+  name: "Reformed American Suburb (New Urbanism)"
+  description: "Walkable, mixed-use suburban transformation"
+  reference_cities:
+    - "Seaside, Florida"
+    - "Kentlands, Maryland"
+    - "Stapleton, Denver"
+  
+  building_regulations:
+    max_height_stories: 4
+    green_roof_requirement: 0.15
+    solar_panel_requirement: 0.25
+    energy_efficiency_standard: "Energy Star"
+    facade_materials:
+      - "brick"
+      - "wood_siding"
+      - "fiber_cement"
+    front_porches: "encouraged"
+    
+  density:
+    residential_units_per_hectare: 40
+    floor_area_ratio: 1.5
+    building_coverage_ratio: 0.35
+    
+  urban_form:
+    street_pattern: "traditional_grid"
+    block_size_m: 120
+    alley_access: "encouraged"
+    mixed_housing_types: "required"
+    
+  green_infrastructure:
+    tree_canopy_coverage: 0.40
+    green_space_per_person_sqm: 20
+    bioswales_required: true
+    permeable_pavement_percentage: 0.5
+    community_gardens: "encouraged"
+    
+  transportation:
+    protected_bike_lanes_km_per_1000_people: 3
+    complete_streets: "required"
+    traffic_calming: "required"
+    public_transit_stop_max_distance_m: 400
+    parking_maximum: 1.2
+    rear_parking: "preferred"
+    
+  mixed_use:
+    ground_floor_commercial_requirement: 0.2
+    residential_commercial_ratio: "75:25"
+    live_work_units: "encouraged"
+    
+  sustainability_features:
+    rainwater_harvesting: "encouraged"
+    district_heating: "none"
+    electric_vehicle_charging: "25% of parking"
+    composting_facilities: "encouraged"
+    community_solar: "optional"
+
+# =============================================================================
+# ASIAN MEGACITY - Extreme Density with Infrastructure
+# =============================================================================
+ASIAN_MEGACITY:
+  name: "Asian Megacity Model"
+  description: "Ultra-high density with advanced transit (Tokyo, Singapore, Hong Kong)"
+  reference_cities:
+    - "Tokyo, Japan"
+    - "Singapore"
+    - "Hong Kong"
+  
+  building_regulations:
+    max_height_stories: 40
+    green_roof_requirement: 0.3
+    solar_panel_requirement: 0.15
+    energy_efficiency_standard: "high_performance"
+    facade_materials:
+      - "glass"
+      - "aluminum"
+      - "high_tech_materials"
+    vertical_gardens: "encouraged"
+    
+  density:
+    residential_units_per_hectare: 400
+    floor_area_ratio: 12.0
+    building_coverage_ratio: 0.60
+    
+  green_infrastructure:
+    tree_canopy_coverage: 0.30  # Despite high density
+    green_space_per_person_sqm: 8
+    vertical_greenery: "required"
+    rooftop_parks: "encouraged"
+    bioswales_required: true
+    
+  transportation:
+    metro_station_max_distance_m: 400
+    protected_bike_lanes_km_per_1000_people: 2
+    pedestrian_skyways: "encouraged"
+    underground_pedestrian_networks: "encouraged"
+    parking_maximum: 0.3  # High transit reliance
+    
+  mixed_use:
+    ground_floor_commercial_requirement: 0.7
+    residential_commercial_ratio: "40:60"
+    vertical_mixed_use: "encouraged"
+    
+  advanced_features:
+    underground_utilities: "required"
+    automated_waste_collection: "preferred"
+    district_cooling: "required"
+    smart_building_systems: "encouraged"
+    
+  sustainability_features:
+    rainwater_harvesting: "mandatory"
+    greywater_recycling: "mandatory"
+    electric_vehicle_charging: "10% of parking"
+    composting_facilities: "required"

@@ -1,0 +1,158 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+venv/
+venv-ml/
+venv-backend/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Node.js
+node_modules/
+.next/
+out/
+dist/
+.cache/
+*.tsbuildinfo
+next-env.d.ts
+
+# Data files (large datasets)
+*.tif
+*.tiff
+*.geotiff
+*.hdf
+*.h5
+*.nc
+data/raw/
+data/processed/
+*.parquet
+*.feather
+
+# Model files
+models/yolo/*.pt
+!models/yolo/.gitkeep
+models/sam/*.pth
+models/growth/*.h5
+models/growth/*.pkl
+*.ckpt
+*.safetensors
+
+# Outputs
+outputs/*
+!outputs/.gitkeep
+experiments/mlruns/*
+!experiments/mlruns/.gitkeep
+experiments/agent_traces/*
+!experiments/agent_traces/.gitkeep
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# API keys and secrets
+*.key
+*.pem
+*.crt
+secrets/
+credentials.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+coverage.xml
+*.cover
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# DVC
+.dvc/cache/
+.dvc/tmp/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Large geospatial files
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.geojson
+!tests/fixtures/*.geojson
+
+# Compiled binaries
+*.exe
+*.dll
+*.dylib
+
+# Documentation (reference only, keep essential READMEs)
+PROJECT_INIT.md
+RESTRUCTURING_COMPLETE.md
+MIGRATION_STATUS.md
+START_HERE.md
+VISUAL_STRUCTURE.md
+DOCUMENTATION_INDEX.md
+SETUP_COMPLETE.md
+TODOS_COMPLETE.md
+
+# Backups
+../urban-evolution-ai-backup-*/
