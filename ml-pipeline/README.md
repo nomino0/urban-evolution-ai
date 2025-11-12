@@ -69,9 +69,6 @@ python data_collection/define_city_boundaries.py --city Tunis
 # Create tile grid
 python data_collection/create_tile_grids.py --city Tunis
 
-# Download aligned data
-python data_collection/aligned_download.py --city Tunis --zoom 15
-```
 
 ### 4. Train Models
 
