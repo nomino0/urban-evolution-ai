@@ -170,7 +170,7 @@ class XTNTExporter:
             split_config = {
                 'tunis': (2, 2),        # 4 quadrants
                 'copenhagen': (2, 2),   # 4 quadrants
-                'shenzhen': (3, 2),     # 6 chunks
+                'manila': (2, 2),       # 4 quadrants
                 'phoenix': (3, 2)       # 6 chunks
             }
         
@@ -213,7 +213,7 @@ def main():
     split_config = {
         'tunis': (2, 2),        # 405 tiles → 4 quadrants (~101 tiles each)
         'copenhagen': (2, 2),   # 390 tiles → 4 quadrants (~98 tiles each)
-        'shenzhen': (3, 2),     # 13158 tiles → 6 chunks (~2193 tiles each)
+        'manila': (2, 2),       # ~400 tiles → 4 quadrants (~100 tiles each)
         'phoenix': (3, 2)       # 4450 tiles → 6 chunks (~742 tiles each)
     }
     

@@ -37,7 +37,7 @@ class CityBoundaryDefiner:
     # Predefined bounding boxes (fallback if OSM query fails)
     FALLBACK_BBOXES = {
         'tunis': {'west': 10.05, 'south': 36.65, 'east': 10.35, 'north': 36.95},
-        'shenzhen': {'west': 113.75, 'south': 22.35, 'east': 114.65, 'north': 22.85},
+        'manila': {'west': 120.90, 'south': 14.40, 'east': 121.10, 'north': 14.70},
         'copenhagen': {'west': 12.45, 'south': 55.58, 'east': 12.70, 'north': 55.78},
         'phoenix': {'west': -112.35, 'south': 33.25, 'east': -111.85, 'north': 33.75}
     }
@@ -52,12 +52,13 @@ class CityBoundaryDefiner:
             'osm_query': 'Grand Tunis, Tunisia',  # Specific metropolitan area
             'relation_id': None  # Will use query
         },
-        'shenzhen': {
-            'country_code': 'CN',
-            'expansion_buffer_km': 20,  # Min 20km clearance → ~140-180km box (huge city)
-            'description': 'Rapid growth megacity',
-            'osm_query': 'Shenzhen, Guangdong, China',
-            'relation_id': None
+        'manila': {
+            'country_code': 'PH',
+            'expansion_buffer_km': 8,  # Min 8km clearance (same as Copenhagen)
+            'description': 'Capital of the Philippines',
+            'osm_query': 'Manila, Metro Manila, Philippines',
+            'relation_id': None,
+            'center_offset_km': {'east': 15, 'north': 0}  # Shift 15km east to avoid water
         },
         'copenhagen': {
             'country_code': 'DK',
