@@ -49,6 +49,8 @@ data/raw/
 data/processed/
 *.parquet
 *.feather
+/ml-pipeline/datasets/copenhagen/    
+
 
 # Model files
 models/yolo/*.pt
