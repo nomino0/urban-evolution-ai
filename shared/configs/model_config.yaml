@@ -1,0 +1,155 @@
+# Model Configuration for Urban Evolution AI Platform
+
+# =============================================================================
+# YOLO v11 - Building Detection
+# =============================================================================
+yolo:
+  model_name: "yolov11n.pt"  # Nano model for fast inference
+  # model_name: "yolov11s.pt"  # Small model (better accuracy)
+  # model_name: "yolov11m.pt"  # Medium model (production)
+  
+  training:
+    epochs: 100
+    batch_size: 16
+    img_size: 640
+    learning_rate: 0.01
+    weight_decay: 0.0005
+    momentum: 0.937
+    patience: 50  # Early stopping patience
+    
+  inference:
+    confidence_threshold: 0.5
+    iou_threshold: 0.4
+    max_detections: 1000
+    device: "cuda"  # or "cpu"
+    
+  augmentation:
+    hsv_h: 0.015
+    hsv_s: 0.7
+    hsv_v: 0.4
+    degrees: 0.0  # No rotation (preserve orientation)
+    translate: 0.1
+    scale: 0.5
+    flipud: 0.0  # No vertical flip (satellite is top-down)
+    fliplr: 0.5  # Horizontal flip OK
+
+# =============================================================================
+# SAM-Geo - Segmentation
+# =============================================================================
+sam:
+  model_type: "vit_h"  # vit_h (huge), vit_l (large), vit_b (base)
+  checkpoint_path: "models/sam/sam_vit_h.pth"
+  
+  inference:
+    points_per_side: 32
+    pred_iou_thresh: 0.88
+    stability_score_thresh: 0.95
+    crop_n_layers: 1
+    crop_n_points_downscale_factor: 2
+    min_mask_region_area: 100  # in pixels
+
+# =============================================================================
+# LSTM - Spatial Growth Prediction
+# =============================================================================
+lstm:
+  architecture:
+    input_shape: [3, 64, 64, 8]  # [timesteps, grid_h, grid_w, features]
+    lstm_units: [128, 64, 32]
+    dropout_rate: 0.2
+    dense_units: [64, 32]
+    output_activation: "sigmoid"
+    
+  training:
+    epochs: 200
+    batch_size: 32
+    learning_rate: 0.001
+    optimizer: "adam"
+    loss: "binary_crossentropy"
+    metrics: ["accuracy", "precision", "recall"]
+    validation_split: 0.2
+    early_stopping_patience: 20
+    
+  features:
+    - "building_density"
+    - "distance_to_center"
+    - "road_accessibility"
+    - "population_density"
+    - "elevation"
+    - "slope"
+    - "land_use_type"
+    - "proximity_to_announced_projects"
+
+# =============================================================================
+# XGBoost - Building Type Classification
+# =============================================================================
+xgboost:
+  params:
+    max_depth: 6
+    learning_rate: 0.1
+    n_estimators: 100
+    objective: "multi:softmax"
+    num_class: 5  # residential, commercial, industrial, government, other
+    eval_metric: "mlogloss"
+    subsample: 0.8
+    colsample_bytree: 0.8
+    min_child_weight: 1
+    gamma: 0
+    
+  features:
+    - "building_area"
+    - "building_perimeter"
+    - "aspect_ratio"
+    - "compactness"
+    - "estimated_height"
+    - "num_floors"
+    - "distance_to_roads"
+    - "distance_to_commercial_center"
+    - "local_building_density"
+    - "osm_tags_present"
+
+# =============================================================================
+# Facebook Prophet - Population Forecasting
+# =============================================================================
+prophet:
+  params:
+    growth: "logistic"  # or "linear"
+    yearly_seasonality: false
+    weekly_seasonality: false
+    daily_seasonality: false
+    changepoint_prior_scale: 0.05
+    seasonality_prior_scale: 10.0
+    interval_width: 0.9  # 90% confidence interval
+    
+  custom_seasonality:
+    - name: "quinquennial"  # 5-year cycles
+      period: 1826  # days
+      fourier_order: 3
+
+# =============================================================================
+# Shadow Analysis - Height Estimation
+# =============================================================================
+shadow_analysis:
+  sun_elevation_angle: 45  # degrees (will be calculated from metadata)
+  shadow_detection:
+    method: "morphological"  # or "edge_detection"
+    kernel_size: 5
+    threshold: 0.3
+  
+  height_estimation:
+    pixel_to_meter_ratio: 0.1  # For 10m resolution Sentinel-2
+    correction_factor: 1.1  # Empirical correction
+
+# =============================================================================
+# Ensemble Model - Combined Predictions
+# =============================================================================
+ensemble:
+  weights:
+    lstm_spatial: 0.4
+    prophet_population: 0.2
+    news_based_adjustment: 0.25
+    osm_planned_development: 0.15
+  
+  confidence_calculation:
+    method: "weighted_std"
+    min_confidence: 0.3
+    max_confidence: 0.95

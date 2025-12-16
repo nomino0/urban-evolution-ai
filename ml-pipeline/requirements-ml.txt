@@ -1,0 +1,98 @@
+# ML Pipeline Dependencies
+# Heavy ML/Data Science libraries for training and experimentation
+
+# ========================
+# Core ML Frameworks
+# ========================
+torch==2.1.1
+torchvision==0.16.1
+tensorflow==2.15.0
+keras==2.15.0
+
+# ========================
+# Computer Vision
+# ========================
+ultralytics==8.0.220  # YOLOv11
+opencv-python==4.8.1.78
+opencv-contrib-python==4.8.1.78
+Pillow==10.1.0
+segment-anything @ git+https://github.com/facebookresearch/segment-anything.git
+samgeo==0.10.2
+
+# ========================
+# Geospatial & Satellite Data
+# ========================
+earthengine-api==0.1.383
+geemap==0.29.6
+google-cloud-storage==2.13.0
+geopandas==0.14.1
+rasterio==1.3.9
+shapely==2.0.2
+fiona==1.9.5
+pyproj==3.6.1
+osmnx==1.7.1
+elevation==1.1.3
+GDAL==3.8.0  # Note: May require system-level installation
+
+# ========================
+# Time Series & ML Algorithms
+# ========================
+scikit-learn==1.3.2
+xgboost==2.0.2
+prophet==1.1.5
+statsmodels==0.14.0
+scipy==1.11.4
+numpy==1.24.3
+pandas==2.1.3
+
+# ========================
+# Deep Learning Utilities
+# ========================
+albumentations==1.3.1  # Data augmentation
+imgaug==0.4.0
+torchmetrics==1.2.1
+
+# ========================
+# MLOps & Experiment Tracking
+# ========================
+mlflow==2.9.2
+dvc==3.30.1
+dvc-gs==2.22.1  # DVC with Google Cloud Storage
+wandb==0.16.0  # Weights & Biases (alternative to MLflow)
+tensorboard==2.15.1
+
+# ========================
+# Data Processing
+# ========================
+pyarrow==14.0.1
+dask==2023.12.0
+dask[dataframe]==2023.12.0
+
+# ========================
+# Visualization
+# ========================
+matplotlib==3.8.2
+seaborn==0.13.0
+plotly==5.18.0
+
+# ========================
+# Jupyter & Notebooks
+# ========================
+jupyter==1.0.0
+jupyterlab==4.0.9
+ipywidgets==8.1.1
+ipykernel==6.27.1
+
+# ========================
+# Utilities
+# ========================
+tqdm==4.66.1
+pyyaml==6.0.1
+python-dotenv==1.0.0
+loguru==0.7.2
+
+# ========================
+# Testing (ML Pipeline)
+# ========================
+pytest==7.4.3
+pytest-cov==4.1.0
