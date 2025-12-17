@@ -50,7 +50,8 @@ data/processed/
 *.parquet
 *.feather
 /ml-pipeline/datasets/copenhagen/  
-/ml-pipeline/datasets/manila/   
+/ml-pipeline/datasets/manila/ 
+/ml-pipeline/datasets/GrandTunis  
 
 
 # Model files
