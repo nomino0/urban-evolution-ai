@@ -62,6 +62,7 @@ models/growth/*.h5
 models/growth/*.pkl
 *.ckpt
 *.safetensors
+/models/segformer_osm_esri_grouped/
 
 # Outputs
 outputs/*
