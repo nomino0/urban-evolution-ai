@@ -133,6 +133,10 @@ logs/
 tmp/
 temp/
 
+# Command output and version files
+[0-9]*.[0-9]*.[0-9]*
+[0-9]*.[0-9]*.[0-9]*'
+
 # Large geospatial files
 *.shp
 *.shx
