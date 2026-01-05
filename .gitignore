@@ -49,7 +49,9 @@ data/raw/
 data/processed/
 *.parquet
 *.feather
-/ml-pipeline/datasets/copenhagen/    
+/ml-pipeline/datasets/copenhagen/  
+/ml-pipeline/datasets/manila/  
+/ml-pipeline/datasets/tunis/  
 
 
 # Model files
@@ -60,7 +62,7 @@ models/growth/*.h5
 models/growth/*.pkl
 *.ckpt
 *.safetensors
-/models/segformer_osm_esri_grouped/
+/mlpiplenes/models
 
 # Outputs
 outputs/*
@@ -159,3 +161,7 @@ TODOS_COMPLETE.md
 
 # Backups
 ../urban-evolution-ai-backup-*/
+ml-pipeline/datasets/copenhagen.zip
+ml-pipeline/datasets/tunis.zip
+ml-pipeline/datasets/manila.zip
+ml-pipeline/masks_train/
